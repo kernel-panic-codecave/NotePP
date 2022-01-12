@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "notepp",
+  "version": "${version}",
+  "name": "Noteblocks++",
+  "description": "Extends the note range of noteblocks to 6 octaves instead of 2",
+  "authors": [
+    "Witherking25"
+  ],
+  "contact": {
+    "homepage": "https://github.com/withertech/NotePP",
+    "sources": "https://github.com/withertech/NotePP"
+  },
+  "license": "GPL-3+",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.withertech.fabric.NotePPFabric"
+    ]
+  },
+  "mixins": [
+    "notepp.mixins.json",
+    "notepp-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.18",
+    "architectury": ">=3.3.7"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

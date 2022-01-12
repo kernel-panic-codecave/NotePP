@@ -1,0 +1,36 @@
+modLoader = "javafml"
+loaderVersion = "[38,)"
+issueTrackerURL = "https://github.com/withertech/NotePP/issues"
+license = "GPL-3+"
+
+[[mods]]
+modId = "notepp"
+version = "${version}"
+displayName = "Noteblocks++"
+authors = "Witherking25"
+description = '''
+Extends the note range of noteblocks to 6 octaves instead of 2
+'''
+displayURL="https://github.com/withertech/NotePP"
+logoFile = "icon.png"
+
+[[dependencies.notepp]]
+modId = "forge"
+mandatory = true
+versionRange = "[38,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.notepp]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.notepp]]
+modId = "architectury"
+mandatory = true
+versionRange = "[3.3.7,)"
+ordering = "AFTER"
+side = "BOTH"

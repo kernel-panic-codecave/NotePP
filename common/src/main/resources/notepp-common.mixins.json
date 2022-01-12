@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.withertech.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+  ],
+  "mixins": [
+    "NoteBlockInstrumentMixin",
+    "NoteBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
