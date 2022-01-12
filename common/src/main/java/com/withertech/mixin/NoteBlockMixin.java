@@ -35,9 +35,11 @@ import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -92,6 +94,15 @@ public abstract class NoteBlockMixin extends Block
 		{
 			blockState = blockState.cycle(OCTAVE);
 			blockState = blockState.setValue(NoteBlock.INSTRUMENT, ((INoteBlockInstrument) (Object) NoteBlockInstrument.byState(level.getBlockState(blockPos.below()))).getOctaveInstrument(blockState.getValue(OCTAVE)));
+			level.setBlock(blockPos, blockState, 3);
+			this.playNote(level, blockPos);
+			player.awardStat(Stats.TUNE_NOTEBLOCK);
+			cir.setReturnValue(InteractionResult.CONSUME);
+		} else if (blockState.getValue(NoteBlock.NOTE) == 24)
+		{
+			blockState = blockState.cycle(OCTAVE);
+			blockState = blockState.setValue(NoteBlock.INSTRUMENT, ((INoteBlockInstrument) (Object) NoteBlockInstrument.byState(level.getBlockState(blockPos.below()))).getOctaveInstrument(blockState.getValue(OCTAVE)));
+			blockState = blockState.cycle(NoteBlock.NOTE);
 			level.setBlock(blockPos, blockState, 3);
 			this.playNote(level, blockPos);
 			player.awardStat(Stats.TUNE_NOTEBLOCK);
